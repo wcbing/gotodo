@@ -3,7 +3,8 @@ package cmd
 import (
 	"fmt"
 	"strconv"
-	"wcbing/gotodo/todo"
+
+	"github.com/wcbing/gotodo/todo"
 )
 
 func Update(t *todo.Todos, args []string) {

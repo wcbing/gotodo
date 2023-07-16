@@ -2,7 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"wcbing/gotodo/todo"
+
+	"github.com/wcbing/gotodo/todo"
 )
 
 func List(t *todo.Todos, args []string) {

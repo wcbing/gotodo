@@ -3,8 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
-	"wcbing/gotodo/cmd"
-	"wcbing/gotodo/todo"
+
+	"github.com/wcbing/gotodo/cmd"
+	"github.com/wcbing/gotodo/todo"
 )
 
 func main() {
