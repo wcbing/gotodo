@@ -5,17 +5,14 @@ import (
 	"os"
 
 	"github.com/wcbing/gotodo/cmd"
+	"github.com/wcbing/gotodo/store"
 	"github.com/wcbing/gotodo/todo"
 )
 
 func main() {
 
-	//test data
 	var t = &todo.Todos{}
-	t.Add("hello", "a")
-	t.Add("demo", "a")
-	t.Add("jdfhjskdfhj", "b")
-	t.Markup(2, true)
+	store.Restore(t)
 
 	if len(os.Args) == 1 {
 		cmd.List(t, nil)
@@ -53,5 +50,5 @@ func main() {
 			cmd.Help()
 		}
 	}
-
+	store.Store(t)
 }
