@@ -18,7 +18,7 @@ func Markup(t *todo.Todos, args []string) {
 		fmt.Println("Invalid parameter")
 		return
 	}
-	if id <= 0 || id >= len(*t) {
+	if id <= 0 || id > len(*t) {
 		fmt.Print("ID error!")
 		return
 	}

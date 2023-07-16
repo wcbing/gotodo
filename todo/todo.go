@@ -17,13 +17,10 @@ type item struct {
 
 type Todos []item
 
-var num int
-
 // add a new todo
 func (t *Todos) Add(content string, category string) {
-	num++
 	todo := item{
-		ID:       num,
+		ID:       len(*t) + 1,
 		Done:     false,
 		Content:  content,
 		Category: category,
@@ -46,31 +43,30 @@ func (t *Todos) ListbyID(id int) {
 
 // delete a todo by id
 func (t *Todos) Delete(id int) error {
-	if id <= 0 || id >= num {
+	if id <= 0 || id > len(*t) {
 		return errors.New("ID error")
 	}
-	for i := id; i < num; i++ {
+	for i := id; i < len(*t); i++ {
 		(*t)[i].ID = i
 	}
 	*t = append((*t)[:id-1], (*t)[id:]...)
-	num--
 
 	return nil
 }
 
 // Update the todo's content and category
 func (t *Todos) Update(id int, content string, category string) error {
-	if id <= 0 || id >= num {
+	if id <= 0 || id > len(*t) {
 		return errors.New("ID error")
 	}
-	(*t)[id].Content = content
-	(*t)[id].Category = category
+	(*t)[id-1].Content = content
+	(*t)[id-1].Category = category
 
 	return nil
 }
 
 func (t *Todos) Markup(id int, state bool) error {
-	if id <= 0 || id >= num {
+	if id <= 0 || id > len(*t) {
 		return errors.New("ID error")
 	}
 	(*t)[id-1].Done = state

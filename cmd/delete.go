@@ -32,7 +32,7 @@ func Delete(t *todo.Todos, args []string) {
 		fmt.Print("Invalid parameter")
 		return
 	}
-	if id <= 0 || id >= len(*t) {
+	if id <= 0 || id > len(*t) {
 		fmt.Print("ID error!")
 		return
 	}
